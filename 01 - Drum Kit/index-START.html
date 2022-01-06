@@ -58,7 +58,15 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  window.addEventListener('keydown', function(e) {
+
+/*-- Notes: 
+  .play(), .keyCode, .currentTime, .classList.add('') and 'transitionend' are inbuilt!
+
+  Learned about: key events, playing audio and listening for transitionend event
+
+--*/
+
+  function playSound(e) {
     // console.log(e) // We can see the object 'e' with its key:value in the console here 
     // console.log(e.keyCode) // this is the keyCode value
     let keyCodeVal = e.keyCode
@@ -71,7 +79,7 @@
     audio.currentTime = 0; // Rewind to the start
     audio.play()    
     key.classList.add('playing');
-  })
+  }
 
   function removeTransition(e){
       // console.log(e); // TransitionEvent
@@ -84,10 +92,12 @@
 
   // Select each key
   const keys = document.querySelectorAll('.key'); 
-  
+
   // 'keys' is a node list
   // So we must explicity loop over and attach an event listener to each
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  
+  window.addEventListener('keydown', playSound);
 
 </script>
 
