@@ -73,6 +73,15 @@
     key.classList.add('playing');
   })
 
+  // Select each key
+  const keys = document.querySelectorAll('.key'); 
+  
+  // 'keys' is a node list
+  // so we must explicity loop over and attach an event listener to each
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+
+
 </script>
 
 
